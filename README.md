@@ -290,7 +290,10 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/e1d671ea-49cd-44ac-b2de-2c13c34058c7"/></p>
     </div>
     <p>
-      Al descargar la imagen (.iso) desde la página oficial de Rocky Linux, uno ingresa a qemu para descargar la máquina virtual, se hacen los procesos como colocar al ubicación de la imagen (.iso), también de         asignarle una partición del disco, asignarle memoria RAM y núcleos de la CPU del pc. Luego de ese proceso ahora sí debe aparecer este mensaje donde pide instalar o testear el pc para saber si corre el            sistema operativo en el pc
+      Al descargar la imagen <b>(.iso)</b> desde la página oficial de <b>Rocky Linux</b>, se ingresa a <b>QEMU</b> para crear la máquina virtual. 
+      En este proceso, se debe definir la <b>ubicación de la imagen (.iso)</b>, asignar una <b>partición del disco</b>, memoria <b>RAM</b> y los <b>núcleos de la CPU</b> del PC.  
+      <br><br>
+      Luego de completar esta configuración inicial, aparecerá el mensaje donde se puede elegir entre <b>instalar</b> o <b>testear</b> el sistema para comprobar si el hardware es compatible y todo funciona correctamente antes de proceder con la instalación.
     </p>
   </li>
 
@@ -299,10 +302,11 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/7c3b7d74-288d-475b-892a-7dcf704d3031"/></p>
     </div>
     <p>
-      Aquí se muestra la configuración de la instalación de Rocky Linux.  
-      La imagen <b>(.iso)</b> ya reconoce automáticamente el idioma, el teclado y otras configuraciones por defecto.  
-      Sin embargo, es necesario elegir el disco donde se almacenará el sistema operativo (el que se asignó desde Virtual Manager).  
-      Además, se debe decidir si se habilita la cuenta <b>root</b> y crear el usuario principal con su respectiva contraseña.
+      Aquí se muestra la <b>configuración de la instalación</b> de Rocky Linux.  
+      La imagen <b>(.iso)</b> detecta automáticamente el <b>idioma</b>, la <b>distribución del teclado</b> y otras configuraciones básicas por defecto.  
+      <br><br>
+      Sin embargo, es necesario seleccionar el <b>disco de instalación</b> (el que se asignó previamente desde Virtual Manager), además de configurar la <b>cuenta root</b> y crear el <b>usuario principal</b> junto con su respectiva contraseña.  
+      Estas configuraciones son esenciales para garantizar el acceso y la administración del sistema después de la instalación.
     </p>
   </li>
 
@@ -311,9 +315,10 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/518480eb-3598-49f3-b3a2-b18b1095d38e"/></p>
     </div>
     <p>
-      Luego comienza la instalación del sistema operativo según el software seleccionado.  
-      Generalmente se deja el modo <b>default</b>, que es una versión más liviana y práctica.
-      Este proceso demora un buen tiempo ya que serían todos los paquetes del sistema
+      Luego comienza la <b>instalación del sistema operativo</b> según el conjunto de software seleccionado.  
+      Generalmente, se deja el modo <b>default</b>, que corresponde a una versión más liviana y práctica para entornos virtualizados.  
+      <br><br>
+      Este proceso puede tardar varios minutos, ya que se instalan todos los <b>paquetes del sistema</b> necesarios para el correcto funcionamiento de Rocky Linux.
     </p>
   </li>
 
@@ -322,7 +327,8 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/c573519f-9a81-4698-9803-ee7bc12c6866"/></p>
     </div>
     <p>
-      Si todo sale bien, el sistema se reiniciará automáticamente y mostrará el usuario que se creó durante la instalación.
+      Si todo sale correctamente, el sistema se <b>reiniciará automáticamente</b> y mostrará la pantalla de inicio de sesión con el <b>usuario creado</b> durante la instalación.  
+      A partir de este punto, ya es posible ingresar al entorno de Rocky Linux.
     </p>
   </li>
 
@@ -331,7 +337,9 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/08ba15d4-6ad7-4c08-810c-7349a8ce1690"/></p>
     </div>
     <p>
-      Finalmente, aparece la interfaz principal de Rocky Linux, ofreciendo un pequeño tutorial opcional y la bienvenida en el terminal.
+      Finalmente, se carga la <b>interfaz principal de Rocky Linux</b>, mostrando una pequeña <b>guía de bienvenida</b> y algunas configuraciones iniciales opcionales.  
+      <br><br>
+      Desde aquí, también se puede acceder al <b>terminal</b> para comenzar a trabajar con comandos y configuraciones del sistema, confirmando que la instalación se realizó de manera exitosa.
     </p>
   </li>
 </ol>
@@ -436,6 +444,7 @@
       
     </p>
   </li>
+  
   <li><br>
     <div align="center">
       <p><img width="850" src="https://github.com/user-attachments/assets/baafee4f-3b03-45ae-a924-b29cd9c92306"/></p>
@@ -457,6 +466,7 @@
       
     </p>
   </li>
+  
   <li><br>
     <div align="center">
       <p><img width="850" src="https://github.com/user-attachments/assets/cb4fd365-7325-4579-a923-f8bd2bb81b11"/></p>
@@ -478,9 +488,19 @@
       
     </p>
   </li>
+  
   <li><br>
     <div align="center">
       <p><img width="850" src="https://github.com/user-attachments/assets/ff019db1-a72a-4d70-9f50-d2c60457c351"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/1c8b05b3-d718-4e43-b0a6-ae0dfa0b898a"/></p>
     </div>
     <p>
       
@@ -499,23 +519,16 @@
 <ol>
   <li><br>
     <div align="center">
-      <p><img width="850" src="https://github.com/user-attachments/assets/e1d671ea-49cd-44ac-b2de-2c13c34058c7"/></p>
+      <p><img width="850" src="https://github.com/user-attachments/assets/582fb4b8-dc77-49b4-bc88-45009d46f773"/></p>
     </div>
     <p>
       
     </p>
   </li>
+  
   <li><br>
     <div align="center">
-      <p><img width="850" src="https://github.com/user-attachments/assets/e1d671ea-49cd-44ac-b2de-2c13c34058c7"/></p>
-    </div>
-    <p>
-      
-    </p>
-  </li>
-  <li><br>
-    <div align="center">
-      <p><img width="850" src="https://github.com/user-attachments/assets/e1d671ea-49cd-44ac-b2de-2c13c34058c7"/></p>
+      <p><img width="850" src="https://github.com/user-attachments/assets/2dd191c4-1839-4e2d-9975-4b2828beecff"/></p>
     </div>
     <p>
       
@@ -528,23 +541,25 @@
 <ol>
   <li><br>
     <div align="center">
-      <p><img width="850" src="https://github.com/user-attachments/assets/e1d671ea-49cd-44ac-b2de-2c13c34058c7"/></p>
+      <p><img width="850" src="https://github.com/user-attachments/assets/7981c12c-468c-4100-9dee-3bbedf60df6b"/></p>
     </div>
     <p>
       
     </p>
   </li>
+  
   <li><br>
     <div align="center">
-      <p><img width="850" src="https://github.com/user-attachments/assets/e1d671ea-49cd-44ac-b2de-2c13c34058c7"/></p>
+      <p><img width="850" src="https://github.com/user-attachments/assets/474c6321-a2d8-45d8-a940-bdfb75569bdd"/></p>
     </div>
     <p>
       
     </p>
   </li>
+
   <li><br>
     <div align="center">
-      <p><img width="850" src="https://github.com/user-attachments/assets/e1d671ea-49cd-44ac-b2de-2c13c34058c7"/></p>
+      <p><img width="850" src="https://github.com/user-attachments/assets/b30c3cfe-8963-4d7c-9b2e-8e2756ad40ca"/></p>
     </div>
     <p>
       
@@ -557,26 +572,68 @@
 <ol>
   <li><br>
     <div align="center">
-      <p><img width="850" src="https://github.com/user-attachments/assets/e1d671ea-49cd-44ac-b2de-2c13c34058c7"/></p>
+      <p><img width="850" src="https://github.com/user-attachments/assets/7910c900-26fd-4df4-92a1-5b345d30b1a8"/></p>
     </div>
     <p>
-      
+      Al descargar la imagen <b>(.iso)</b> desde la página oficial de <b>Alma Linux</b>, se ingresa a <b>QEMU</b> para crear la máquina virtual.  
+      En este proceso se deben realizar pasos como <b>seleccionar la ubicación de la imagen (.iso)</b>, asignar una <b>partición del disco</b>, definir la cantidad de <b>memoria RAM</b> y los <b>núcleos de CPU</b> del PC.  
+      <br><br>
+      Luego de configurar todo, aparecerá el mensaje inicial donde se puede <b>instalar</b> o <b>testear</b> el sistema para comprobar si el hardware es compatible y todo funciona correctamente.
     </p>
   </li>
+  
   <li><br>
     <div align="center">
-      <p><img width="850" src="https://github.com/user-attachments/assets/e1d671ea-49cd-44ac-b2de-2c13c34058c7"/></p>
+      <p><img width="850" src="https://github.com/user-attachments/assets/bcdca4fc-17c0-45aa-aa98-d3c34cd54daf"/></p>
     </div>
     <p>
-      
+      Luego aparece la opción para escoger el <b>idioma del sistema</b> y el <b>idioma del teclado</b>, permitiendo continuar con la instalación de manera clara y comprensible.  
+      Estas configuraciones iniciales aseguran que el entorno sea más accesible durante todo el proceso.
     </p>
   </li>
+  
   <li><br>
     <div align="center">
-      <p><img width="850" src="https://github.com/user-attachments/assets/e1d671ea-49cd-44ac-b2de-2c13c34058c7"/></p>
+      <p><img width="850" src="https://github.com/user-attachments/assets/eaee87e0-2dde-4192-b41d-1395e0cd1a1e"/></p>
     </div>
     <p>
-      
+      En esta parte se muestra el <b>disco o partición</b> que fue asignado al sistema operativo desde QEMU.  
+      De esta manera, se puede seleccionar directamente la unidad de instalación sin confusiones, garantizando que Alma Linux se instale en el espacio correcto.
+    </p>
+  </li>
+  
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/a20b56c3-a4a7-45d4-b26e-7b7569c1d68f"/></p>
+    </div>
+    <p>
+      En este paso se crea el <b>usuario principal</b> que podrá ingresar al sistema.  
+      Es necesario ingresar el <b>nombre completo</b>, el <b>nombre de usuario</b> y establecer una <b>contraseña segura</b>.  
+      <br><br>
+      Esto permite personalizar el entorno de trabajo y garantizar el acceso protegido al sistema operativo.
+    </p>
+  </li>
+
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/7ec3513a-a4ba-43b8-85ab-33359b7c1265"/></p>
+    </div>
+    <p>
+      Una vez configurado todo, se procede a <b>instalar el sistema</b>.  
+      Este proceso puede tardar varios minutos, ya que se instalan todos los <b>paquetes y dependencias</b> necesarias para el funcionamiento completo de Alma Linux.
+    </p>
+  </li>
+
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/de796da9-8f2d-422d-bf6f-d5bcf6c76092"/></p>
+      <p><img width="850" src="https://github.com/user-attachments/assets/4eba450f-bb75-473d-9645-61954b591b01"/></p>
+    </div>
+    <p>
+      Finalmente, después de <b>reiniciar el sistema</b>, aparecerá el <b>usuario creado</b> para iniciar sesión.  
+      <br><br>
+      Una vez dentro, se mostrará la <b>pantalla de bienvenida</b> de Alma Linux, junto con un pequeño <b>tour inicial</b> para familiarizarse con el entorno del sistema.  
+      Desde este punto, el sistema operativo queda listo para usarse de forma completa.
     </p>
   </li>
 </ol>
