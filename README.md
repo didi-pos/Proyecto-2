@@ -312,7 +312,7 @@
       Al descargar la imagen <b>(.iso)</b> desde la página oficial de <b>Rocky Linux</b>, se ingresa a <b>QEMU</b> para crear la máquina virtual. 
       En este proceso, se debe definir la <b>ubicación de la imagen (.iso)</b>, asignar una <b>partición del disco</b>, memoria <b>RAM</b> y los <b>núcleos de la CPU</b> del PC.  
       <br><br>
-      Luego de completar esta configuración inicial, aparecerá el mensaje donde se puede elegir entre <b>instalar</b> o <b>testear</b> el sistema para comprobar si el hardware es compatible y todo funciona correctamente antes de proceder con la instalación.
+      Luego de completar esta configuración inicial, aparecerá el mensaje donde se puede elegir entre <b>instalar</b> o <b>testear</b> el sistema para comprobar si el hardware es compatible y todo funciona             correctamente antes de proceder con la instalación.
     </p>
   </li>
 
@@ -452,9 +452,13 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/f69ed6e7-dee7-4dfb-b30f-32c870c5e50f"/></p>
     </div>
     <p>
-      Primero para crear el contenedor de Garuda, y el proceso de los demás contenedores es similar. Empezamos creando una carpeta donde vamos a colocar todos los contenedores, entramos a la carpeta y ahi si           colocamos la capeta de dockerizacion para Garuda, entramos a la carpeta y ahora si creamos el Dockerfile, en la siguiente imagen muestro y explico el Dockerfile. Después se construye la imagen docker para        poder hacerla correr como contenedor con el comando: <code>docker build -t &lt;nombre_imagen&gt; .</code>.
+      Primero, para crear el contenedor de <b>Garuda</b> (aunque el proceso es similar para los demás contenedores), se empieza creando una carpeta donde se van a colocar todos los proyectos de contenedores.           Luego, dentro de esa carpeta, se crea otra carpeta dedicada a la <b>dockerización</b> de Garuda. Una vez dentro, se procede a crear el archivo <b>Dockerfile</b>. En la siguiente imagen se muestra y explica       su contenido.  
+      <br><br>
+      Después, se construye la imagen de Docker para poder ejecutarla como contenedor mediante el comando:  
+      <code>docker build -t &lt;nombre_imagen&gt; .</code>
     </p>
   </li>
+  
   <li><br>
     <div align="center">
       <p><img width="850" src="https://github.com/user-attachments/assets/49b5fed5-b2e9-4edc-8471-24f66b05c4e9"/></p>
@@ -470,8 +474,7 @@
         <li><code>EXPOSE 22</code> → Expone el <b>puerto 22</b>, el estándar utilizado por el protocolo SSH, permitiendo conexiones externas al contenedor.</li>
         <li><code>CMD ["/usr/sbin/sshd", "-D"]</code> → Define el <b>comando por defecto</b> al ejecutar el contenedor: inicia el servicio SSH en modo demonio para mantener el contenedor activo.</li>
       </ul><br>
-      Se hace con la imagen reciente de Arch Linux ya que es lo más correcto y funcional dentro del ecosistema Docker, porque Garuda no tiene una imagen oficial en Docker Hub, pero Arch sí.
-      Por tanto, usar <codee>archlinux:latest</code> da una imagen limpia, ligera y actualizada sobre la cual uno puede instalar los paquetes y configuraciones que tiene Garuda.
+      Se usa la imagen de <b>Arch Linux</b> porque Garuda no cuenta con una versión oficial en Docker Hub. Arch es su base, por lo tanto, utilizar <code>archlinux:latest</code> permite obtener una imagen               <b>limpia, ligera y actualizada</b>, sobre la cual se pueden instalar los paquetes y configuraciones necesarias para simular el entorno de Garuda.
     </p>
   </li>
   
@@ -480,7 +483,8 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/baafee4f-3b03-45ae-a924-b29cd9c92306"/></p>
     </div>
     <p>
-      Aqui ya se corre el contenedor (<code>docker run</code>) pero de una forma más especifica, ya que se requiere colocar el puerto, lo que va a consumir el contenedor y detalles especificos para que nos funcione la conexión con los demás equipos, aqui se muestra el significado de cada comando:
+      Aquí ya se ejecuta el contenedor con <code>docker run</code>, pero de una forma más detallada, ya que se especifican parámetros importantes como el puerto, los recursos del sistema y la configuración de          red para que funcione correctamente junto a otros equipos. A continuación se explica cada parámetro:
+      <ul>
       <ul>
         <li><code>-d</code> →  
         Ejecuta el contenedor en <b>modo desapegado (detached)</b>, es decir, en segundo plano, permitiendo seguir usando la terminal.</li>
@@ -519,8 +523,14 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/b26516e3-1b6d-42f0-a1d9-5fb0a275a5f2"/></p>
     </div>
     <p>
-      Para crear este contenedor, se crea la carpeta donde se va a Dockerizar este sistema operativo, pero en la misma carpeta contenedores, ya que ahi es donde se colocaran todos los contenedores que se vayan a Dockerizar, luego se crea el Dockerfile el cual configurara toda la construcción de la imagen, por ultimo se contruye la image del SO, con <code>docker build -t &lt;nombre_imagen&gt; .</code>.
-      Luego se corre el contenedor con las espicificaciones que le vayamos a dar, a este se le dio menos recursos ya que no es el nodo o el administrador de la subred, abajo se muestra el contenedor corriendo con la espicificaciones dadas.
+      Para crear este contenedor, primero se genera la carpeta donde se va a <b>dockerizar</b> este sistema operativo, dentro de la misma carpeta <b>“contenedores”</b>, ya que ahí se colocarán todos los                contenedores que se vayan a crear.  
+      Luego, se realiza el <b>Dockerfile</b>, que será el encargado de configurar toda la construcción de la imagen.  
+      Finalmente, se construye la imagen del sistema operativo con el comando:  
+      <code>docker build -t &lt;nombre_imagen&gt; .</code>  
+      <br><br>
+      Después de eso, se corre el contenedor con las especificaciones que se le asignen.  
+      A este se le dieron menos recursos ya que no actúa como nodo principal ni como administrador de la subred.  
+      En la imagen se puede ver el contenedor corriendo con las configuraciones dadas.
     </p>
   </li>
   
@@ -529,7 +539,11 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/cb4fd365-7325-4579-a923-f8bd2bb81b11"/></p>
     </div>
     <p>
-      Aqui se muestra el Dockerfile de este sistema operativo, aqui se evidencia que no toco hacer lo mismo con la imagen base la cual se desea contruir el contenedor, ya que en Ubuntu si esta Ubuntu en el ecosistema de Docker Hub, asi que se puede poner directo sin necesidad de coger el sistema en el cual es basado (Debian). Aunque tiene unos comandos diferentes al anterior SO, y esto significan:
+      En esta parte se muestra el <b>Dockerfile</b> del sistema operativo.  
+      Aquí se evidencia que no fue necesario realizar el mismo proceso que con el anterior sistema, ya que Ubuntu sí cuenta con una imagen oficial en <b>Docker Hub</b>.  
+      Por eso se puede usar directamente sin recurrir al sistema base (Debian).  
+      <br><br>
+      Aunque tiene algunos comandos diferentes, su función es muy similar. A continuación, se explica cada uno:
       <ul>
         <li><code>RUN apt-get update</code> actualiza la lista de paquetes disponibles.</li>
         <li><code>apt-get install</code> instala herramientas esenciales como <code>net-tools</code> (para ifconfig), <code>iputils-ping</code> (para ping), <code>openssh-server</code> (para habilitar SSH), <code>curl</code> y <code>wget</code> (para descargas).</li>
@@ -549,7 +563,10 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/acdc7d1c-abb8-479c-b6fc-0adc8b782b91"/></p>
     </div>
     <p>
-      Aqui se muestra el mismo proceso de crear una carpeta para la Dockerizacion del sistema operattivo, pero dentro de la carpeta "contenedores", ya que ahi se estan colocando todos los contenedores, luego se crea el respectivo Dockerfile para crear la imagen de docker, y por ultimo se contruye la imagen del SO con <code>docker build -t &lt;nombre_imagen&gt; .</code>.
+      Aquí se sigue el mismo proceso de crear una carpeta para la <b>dockerización</b> del sistema operativo dentro de la carpeta <b>“contenedores”</b>, donde se están almacenando todos los contenedores.  
+      Luego se crea el <b>Dockerfile</b> correspondiente para construir la imagen, y finalmente se genera con el comando:  
+      <code>docker build -t &lt;nombre_imagen&gt; .</code>
+    </p>
   </li>
   
   <li><br>
@@ -557,7 +574,7 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/ff019db1-a72a-4d70-9f50-d2c60457c351"/></p>
     </div>
     <p>
-      Este es el mismo Dockerfile pero tambien cambia unos detalles el cual lo hace correr a la perfección pero con un cambio en esa configuración:
+      Este es el <b>Dockerfile</b> de Alpine. Aunque su estructura es similar, tiene algunos detalles diferentes que permiten que funcione correctamente con su propio gestor de paquetes:
       <ul>
         <li><code>RUN apk add --no-cache bash openssh net-tools curl wget</code> → Instala paquetes usando el <b>gestor de paquetes de Alpine (apk)</b>:
           <ul>
@@ -577,8 +594,8 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/1c8b05b3-d718-4e43-b0a6-ae0dfa0b898a"/></p>
     </div>
     <p>
-      Ahora si corremos el contenedor con las espicificaciones solicitadas, los recursos que debe gastar serian los mismos al del SO Ubuntu, ya que es una rama del nodo de la subred Financiera.
-    </p>
+      Finalmente, se corre el contenedor con las especificaciones solicitadas.  
+      Los recursos asignados son los mismos que los del contenedor de Ubuntu, ya que este pertenece a la misma rama dentro de la subred <b>Financiera</b>.
     </p>
   </li>
 </ol>
@@ -597,7 +614,12 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/582fb4b8-dc77-49b4-bc88-45009d46f773"/></p>
     </div>
     <p>
-      
+      El proceso es el mismo que en los anteriores contenedores, a pesar de que se utilice otra distribución, ya que todos se instalan dentro de la carpeta <b>"contenedores"</b>.
+      Luego, se crea el archivo <b>Dockerfile</b> correspondiente para construir la imagen, y finalmente se genera con el comando: <code>docker build -t &lt;nombre_imagen&gt; .</code>.
+      <br><br>
+      Después de eso, se ejecuta el contenedor con las especificaciones asignadas.
+      A este se le otorgaron más recursos, ya que actúa como el <b>nodo principal (admin)</b> de la subred.
+      En la imagen se puede observar el contenedor corriendo con las configuraciones establecidas.
     </p>
   </li>
   
@@ -606,7 +628,11 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/2dd191c4-1839-4e2d-9975-4b2828beecff"/></p>
     </div>
     <p>
-      
+      Este dockerfile es muy similar, pero toca configurar el SO a su manera, que seria asi:
+      <ul>
+        <li><code>dnf update -y</code> actualiza todos los paquetes del sistema sin pedir confirmación (<code>-y</code>).</li>
+        <li><code>dnf install -y</code> instala los paquetes necesarios para el contenedor</li>
+        <li><code>dnf clean all</code> elimina los archivos temporales y la caché del gestor para <b>mantener la imagen ligera</b>.</li>
     </p>
   </li>
 </ol>
@@ -619,7 +645,9 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/7981c12c-468c-4100-9dee-3bbedf60df6b"/></p>
     </div>
     <p>
-      
+      El proceso es el mismo que los anteriores contenedores, ya que se van a instalar en la misma carpeta "contenedores".
+      Después se crea el <b>Dockerfile</b> correspondiente para construir la imagen, y finalmente se genera con el comando:  
+      <code>docker build -t &lt;nombre_imagen&gt; .</code>.
     </p>
   </li>
   
@@ -628,7 +656,8 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/474c6321-a2d8-45d8-a940-bdfb75569bdd"/></p>
     </div>
     <p>
-      
+      El <b>Dockerfile</b> de este sistema operativo es prácticamente el mismo que el de Ubuntu, ya que, como se mencionó antes, <b>Ubuntu está basado en Debian</b>.
+      Por lo tanto, comparten muchos comandos y configuraciones, lo que hace que el proceso de creación e instalación de la imagen sea casi idéntico.
     </p>
   </li>
 
@@ -637,7 +666,9 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/b30c3cfe-8963-4d7c-9b2e-8e2756ad40ca"/></p>
     </div>
     <p>
-      
+      En esta imagen se puede evidenciar que <b>todos los contenedores están conectados</b> a la red llamada <b>"red_empresa"</b>.
+      También se muestran los puertos asignados a cada contenedor, los cuales son distintos entre sí.
+      Sin embargo, la comunicación entre ellos se realiza a través del <b>puerto 22 (SSH)</b>, que es el encargado de permitir la conexión segura entre los contenedores.
     </p>
   </li>
 </ol>
