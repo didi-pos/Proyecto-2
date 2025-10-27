@@ -743,3 +743,210 @@
     </p>
   </li>
 </ol>
+
+<hr>
+
+<div align="center">
+  <p><em>Conexión de la Red</em></p>
+</div>
+
+<hr>
+
+<div align="center">
+  <h2>Conexión Red, Subred Dependencia Financiera, Subred Comercial y Ventas</h2>
+</div>
+
+<ol>
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/4d1ca026-2552-423f-9bf7-f5b50869ac8b"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+  
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/13edfd85-5b19-4092-a64d-c41f6e2300e2"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+  
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/7f17505b-7b25-4794-a267-203c7b2eef6f"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+  
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/f4831df6-f715-499c-8ff3-18509bb8bc35"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+  
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/5812d3db-59d4-4057-b4b9-883e33a8361a"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+  
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/5227204c-a753-4bd5-9cf2-d88719879220"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/725ff284-f2d2-4a50-8813-68cc3ca7571d"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/2367addc-c9f4-4fb6-89fd-ed0a75548e55"/></p>
+      <p><img width="850" src="https://github.com/user-attachments/assets/4b883c08-6db9-4b4a-aa3b-76f5ff23548d"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/28871441-35cc-436b-943e-1a6ed88eaca7"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/94e477b0-6fa7-4c4b-ab04-00ef22c501b3"/></p>
+      <p><img width="850" src="https://github.com/user-attachments/assets/7e2b51a0-4a4f-4c0d-b53e-e99916cddd15"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/23ae1ad6-3d07-40ff-bd13-c5955f586863"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+</ol>
+
+<div align="center">
+  <h2>Pruebe de Conexión Red, Subred Dependencia Financiera, Subred Comercial y Ventas</h2>
+</div>
+
+<h2>Prueba Ubuntu (Host)</h2>
+
+<ol>
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/01ea665e-362f-45be-9edd-b4306da5b697"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+  
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/d24181d7-077a-434e-a1b9-e1708c148389"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+</ol>
+
+<h2>Prueba Debian (Admin)</h2>
+
+<ol>
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/39e49951-af53-4ff1-b786-655d4a1f9100"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+  
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/4e04d1ca-e2c8-4fe1-8618-e8d1c0268239"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+</ol>
+
+<h2>Prueba Garuda (Nodo)</h2>
+
+<ol>
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/e1d48c66-c8a2-4747-b2c9-5872ed17b8de"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+  
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/e342e0b2-1703-4e25-ab2e-ede23f16f4bc"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+</ol>
+
+<h2>Prueba Fedora (Nodo)</h2>
+
+<ol>
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/4475c1b5-cbb2-4d04-9682-37231c8fdf7c"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+  
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/38e6a1ae-ef1f-42c1-9f6d-3db30ad2826d"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+</ol>
