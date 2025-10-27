@@ -278,19 +278,54 @@
 <ol>
   <li><br>
     <div align="center">
-      <p><img width="850" src="https://github.com/user-attachments/assets/582fb4b8-dc77-49b4-bc88-45009d46f773"/></p>
+      <p><img width="850" src="https://github.com/user-attachments/assets/831f2100-1109-4638-81d6-5b2233b103b8"/></p>
     </div>
     <p>
-      
+      Primero, para crear el contenedor de <b>CentOS</b> (aunque el proceso es similar para los demás contenedores), se empieza creando una carpeta donde se van a colocar todos los proyectos de contenedores. Luego, dentro de esa carpeta, se crea otra carpeta dedicada a la <b>dockerización</b> de CentOS con el nombre <code>RH-CentOS</code>. Una vez dentro, se procede a crear el archivo <b>Dockerfile</b>. En la siguiente imagen se muestra y explica su contenido.
+      <br><br>
+      Después, se construye la imagen de Docker para poder ejecutarla como contenedor mediante el comando: <code>docker build -t rec_hum-centos .</code>. Luego corremos el contenedor con estos comandos, ya que se necesitan poner especificaciones para que corra con los requisitos que uno desea, estos serian los comando usados:
+      <ul>
+        <li><code>-d</code> → Ejecuta el contenedor en <b>modo desapegado (detached)</b>, es decir, en segundo plano, permitiendo seguir usando la terminal.</li>
+        <li><code>--name rh-centos</code> → Asigna el nombre <b>rh-centos</b> al contenedor.  
+        Esto facilita identificarlo o ejecutarlo más tarde sin tener que usar el ID largo del contenedor.</li>
+        <li><code>--hostname rh-centos</code> → Define el <b>nombre de host</b> que el contenedor usará internamente.  
+        Este es el nombre que se mostrará dentro del contenedor al ejecutar comandos como <code>hostname</code> o <code>ping</code>.</li>
+        <li><code>--network red_empresa</code> → Conecta el contenedor a la red de Docker llamada <b>red_empresa</b>.  
+        Esto permite la comunicación con otros contenedores dentro de esa misma red virtual.</li>
+        <li><code>--ip 172.20.1.13</code> → Asigna una <b>dirección IP fija</b> dentro de la red de Docker especificada.  
+        De esta manera, el contenedor siempre tendrá la misma IP y será más fácil ubicarlo o conectarlo con otros servicios. Esta IP pertenece a la subred de <b>Recursos Humanos</b> junto con los demás componentes de ese departamento.</li>
+        <li><code>-m 512m</code> → Limita la cantidad máxima de <b>memoria RAM</b> que puede usar el contenedor a <b>512 MB</b>.</li>
+        <li><code>--cpus="0.5"</code> → Restringe al contenedor para que use solo <b>medio núcleo de CPU</b> del sistema host.</li>
+        <li><code>-p 2207:22</code> → Mapea el puerto <b>22</b> del contenedor (donde corre el servicio SSH) al puerto <b>2207</b> del equipo host.  
+        Así puedes conectarte por SSH al contenedor usando <code>ssh -p 2207 root@localhost</code> o <code>ssh root@172.20.1.13</code>.</li>
+        <li><code>--restart unless-stopped</code> → Configura el contenedor para que se <b>reinicie automáticamente</b> en caso de fallo, a menos que se detenga manualmente.</li>
+        <li><code>rec_hum-centos</code> → Es el <b>nombre de la imagen</b> que se usa para crear el contenedor.  
+        En este caso, es la imagen personalizada que construimos anteriormente basada en <b>CentOS 7</b>.</li>
+      </ul>
+      <br>
+      Al finalizar, se ejecuta <code>docker ps</code> para verificar que el contenedor esté corriendo correctamente. En la salida se puede observar que <b>rh-centos</b> aparece con estado <i>"Up 4 seconds"</i>, confirmando que el contenedor se inició exitosamente y está listo para recibir conexiones SSH en el puerto 2207.
     </p>
   </li>
   
   <li><br>
     <div align="center">
-      <p><img width="850" src="https://github.com/user-attachments/assets/2dd191c4-1839-4e2d-9975-4b2828beecff"/></p>
+      <p><img width="850" src="https://github.com/user-attachments/assets/b1117001-df9b-49d6-a8a2-4e500cbd31fd"/></p>
     </div>
     <p>
-      
+      Este seria el dockerfile del contenedor para configurar la construccion de la imagen y quede la dockerización como uno desea:
+      <ul>
+        <li><code>FROM centos:7</code> → Indica que la <b>imagen base</b> será CentOS 7, sobre la cual se construirá el contenedor.</li>
+        <li><code>RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && \</code> → Desactiva las listas de mirrors originales que ya no están disponibles.</li>
+        <li><code>sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*</code> → Cambia la URL base de los repositorios para usar <b>vault.centos.org</b>, que es el archivo histórico de CentOS, ya que CentOS 7 llegó al final de su ciclo de vida en junio de 2024.</li>
+        <li><code>RUN yum update -y && \</code> → Actualiza todos los paquetes del sistema sin pedir confirmación del usuario.</li>
+        <li><code>yum install -y net-tools iputils openssh-server openssh-clients && \</code> → Instala los <b>paquetes esenciales</b> para administración de red y el servidor SSH.</li>
+        <li><code>yum clean all</code> → Limpia la caché de paquetes de yum para reducir el tamaño final de la imagen Docker.</li>
+        <li><code>RUN ssh-keygen -A</code> → Genera las <b>claves del servidor SSH</b> necesarias para poder iniciar el servicio <code>sshd</code> dentro del contenedor.</li>
+        <li><code>RUN echo "root:password123" | chpasswd</code> → Asigna una <b>contraseña al usuario root</b> (en este caso "password123") para permitir el acceso mediante SSH.</li>
+        <li><code>EXPOSE 22</code> → Expone el <b>puerto 22</b>, el estándar utilizado por el protocolo SSH, permitiendo conexiones externas al contenedor.</li>
+        <li><code>CMD ["/usr/sbin/sshd", "-D"]</code> → Define el <b>comando por defecto</b> al ejecutar el contenedor: inicia el servicio SSH en modo demonio para mantener el contenedor activo.</li>
+      </ul><br>
+      Es importante mencionar que CentOS 7 ya no cuenta con soporte activo, por lo que fue necesario modificar los repositorios para apuntar a <b>vault.centos.org</b>, donde se mantiene un archivo de las versiones antiguas. Esta configuración permite seguir instalando paquetes, aunque se recomienda usar versiones más actuales como <b>Rocky Linux</b> o <b>AlmaLinux</b> para proyectos en producción.
     </p>
   </li>
 </ol>
