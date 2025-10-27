@@ -859,6 +859,8 @@
   </li>
 </ol>
 
+<hr>
+
 <div align="center">
   <h2>Pruebe de Conexión Red, Subred Dependencia Financiera, Subred Comercial y Ventas</h2>
 </div>
