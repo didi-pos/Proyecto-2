@@ -275,6 +275,25 @@
 
 <h2>Instalación Contenedor CentOS</h2>
 
+<ol>
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/582fb4b8-dc77-49b4-bc88-45009d46f773"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+  
+  <li><br>
+    <div align="center">
+      <p><img width="850" src="https://github.com/user-attachments/assets/2dd191c4-1839-4e2d-9975-4b2828beecff"/></p>
+    </div>
+    <p>
+      
+    </p>
+  </li>
+</ol>
 
 <hr>
 
@@ -433,7 +452,7 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/f69ed6e7-dee7-4dfb-b30f-32c870c5e50f"/></p>
     </div>
     <p>
-      
+      Primero para crear el contenedor de Garuda, y el proceso de los demás contenedores es similar. Empezamos creando una carpeta donde vamos a colocar todos los contenedores, entramos a la carpeta y ahi si           colocamos la capeta de dockerizacion para Garuda, entramos a la carpeta y ahora si creamos el Dockerfile, en la siguiente imagen muestro y explico el Dockerfile. Después se construye la imagen docker para        poder hacerla correr como contenedor con el comando: <code>docker build -t &lt;nombre_imagen&gt; .</code>.
     </p>
   </li>
   <li><br>
@@ -441,7 +460,18 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/49b5fed5-b2e9-4edc-8471-24f66b05c4e9"/></p>
     </div>
     <p>
-      
+      <ul>
+        <li><code>FROM archlinux:latest</code> → Indica que la <b>imagen base</b> será la versión más reciente de Arch Linux, sobre la cual se construirá el contenedor.</li>
+        <li><code>RUN pacman -Sy --noconfirm && \</code> → Actualiza la base de datos de paquetes de Arch Linux sin pedir confirmación del usuario (<code>--noconfirm</code>).</li>
+        <li><code>pacman -S --noconfirm base-devel git wget curl net-tools openssh && \</code> → Instala los <b>paquetes esenciales</b> para desarrollo y administración del sistema: compiladores, Git,                    herramientas de red y el servidor SSH.</li>
+        <li><code>pacman -Scc --noconfirm</code> → Limpia la caché de paquetes de pacman para reducir el tamaño final de la imagen Docker.</li>
+        <li><code>RUN ssh-keygen -A</code> → Genera las <b>claves del servidor SSH</b> necesarias para poder iniciar el servicio <code>sshd</code> dentro del contenedor.</li>
+        <li><code>RUN echo "root:password123" | chpasswd</code> → Asigna una <b>contraseña al usuario root</b> (en este caso “password123”) para permitir el acceso mediante SSH.</li>
+        <li><code>EXPOSE 22</code> → Expone el <b>puerto 22</b>, el estándar utilizado por el protocolo SSH, permitiendo conexiones externas al contenedor.</li>
+        <li><code>CMD ["/usr/sbin/sshd", "-D"]</code> → Define el <b>comando por defecto</b> al ejecutar el contenedor: inicia el servicio SSH en modo demonio para mantener el contenedor activo.</li>
+      </ul><br>
+      Se hace con la imagen reciente de Arch Linux ya que es lo más correcto y funcional dentro del ecosistema Docker, porque Garuda no tiene una imagen oficial en Docker Hub, pero Arch sí.
+      Por tanto, usar <codee>archlinux:latest</code> da una imagen limpia, ligera y actualizada sobre la cual uno puede instalar los paquetes y configuraciones que tiene Garuda.
     </p>
   </li>
   
@@ -450,7 +480,33 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/baafee4f-3b03-45ae-a924-b29cd9c92306"/></p>
     </div>
     <p>
-      
+      Aqui ya se corre el contenedor (<code>docker run</code>) pero de una forma más especifica, ya que se requiere colocar el puerto, lo que va a consumir el contenedor y detalles especificos para que nos funcione la conexión con los demás equipos, aqui se muestra el significado de cada comando:
+      <ul>
+        <li><code>-d</code> →  
+        Ejecuta el contenedor en <b>modo desapegado (detached)</b>, es decir, en segundo plano, permitiendo seguir usando la terminal.</li>
+        <li><code>--name fin-garuda</code> →  
+        Asigna el nombre <b>fin-garuda</b> al contenedor.  
+        Esto facilita identificarlo o ejecutarlo más tarde sin tener que usar el ID largo del contenedor.</li>
+        <li><code>--hostname fin-garuda</code> →  
+        Define el <b>nombre de host</b> que el contenedor usará internamente.  
+        Este es el nombre que se mostrará dentro del contenedor al ejecutar comandos como <code>hostname</code> o <code>ping</code>.</li>
+        <li><code>--network red_empresa</code> →  
+        Conecta el contenedor a la red de Docker llamada <b>red_empresa</b>.  
+        Esto permite la comunicación con otros contenedores dentro de esa misma red virtual.</li>
+        <li><code>--ip 172.20.2.10</code> →  
+        Asigna una <b>dirección IP fija</b> dentro de la red de Docker especificada.  
+        De esta manera, el contenedor siempre tendrá la misma IP y será más fácil ubicarlo o conectarlo con otros servicios.</li>
+        <li><code>-m 1g</code> →  
+        Limita la cantidad máxima de <b>memoria RAM</b> que puede usar el contenedor a <b>1 GB</b>.</li>
+        <li><code>--cpus="1"</code> →  
+        Restringe al contenedor para que use solo <b>1 núcleo de CPU</b> del sistema host.</li>
+        <li><code>-p 2202:22</code> →  
+        Mapea el puerto <b>22</b> del contenedor (donde corre el servicio SSH) al puerto <b>2202</b> del equipo host.  
+        Así puedes conectarte por SSH al contenedor usando <code>ssh -p 2202 usuario@localhost</code>.</li>
+        <li><code>financiera-garuda</code> →  
+        Es el <b>nombre de la imagen</b> que se usa para crear el contenedor.  
+        En este caso, es una imagen personalizada basada en <b>Garuda Linux</b>.</li>
+      </ul>
     </p>
   </li>
 </ol>
@@ -463,7 +519,8 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/b26516e3-1b6d-42f0-a1d9-5fb0a275a5f2"/></p>
     </div>
     <p>
-      
+      Para crear este contenedor, se crea la carpeta donde se va a Dockerizar este sistema operativo, pero en la misma carpeta contenedores, ya que ahi es donde se colocaran todos los contenedores que se vayan a Dockerizar, luego se crea el Dockerfile el cual configurara toda la construcción de la imagen, por ultimo se contruye la image del SO, con <code>docker build -t &lt;nombre_imagen&gt; .</code>.
+      Luego se corre el contenedor con las espicificaciones que le vayamos a dar, a este se le dio menos recursos ya que no es el nodo o el administrador de la subred, abajo se muestra el contenedor corriendo con la espicificaciones dadas.
     </p>
   </li>
   
@@ -472,7 +529,14 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/cb4fd365-7325-4579-a923-f8bd2bb81b11"/></p>
     </div>
     <p>
-      
+      Aqui se muestra el Dockerfile de este sistema operativo, aqui se evidencia que no toco hacer lo mismo con la imagen base la cual se desea contruir el contenedor, ya que en Ubuntu si esta Ubuntu en el ecosistema de Docker Hub, asi que se puede poner directo sin necesidad de coger el sistema en el cual es basado (Debian). Aunque tiene unos comandos diferentes al anterior SO, y esto significan:
+      <ul>
+        <li><code>RUN apt-get update</code> actualiza la lista de paquetes disponibles.</li>
+        <li><code>apt-get install</code> instala herramientas esenciales como <code>net-tools</code> (para ifconfig), <code>iputils-ping</code> (para ping), <code>openssh-server</code> (para habilitar SSH), <code>curl</code> y <code>wget</code> (para descargas).</li>
+        <li><code>apt-get clean</code> elimina los archivos temporales de instalación, reduciendo el tamaño final de la imagen.</li>
+        <li><code>RUN mkdir /var/run/sshd</code> → Crea el directorio donde el servicio SSH almacenará sus archivos de ejecución (<code>sshd.pid</code>).</li>
+        <li><code>RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config</code> → Modifica el archivo de configuración del servicio SSH para <b>permitir el inicio de sesión como root</b>.</li>
+      </ul>
     </p>
   </li>
 </ol>
@@ -485,8 +549,7 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/acdc7d1c-abb8-479c-b6fc-0adc8b782b91"/></p>
     </div>
     <p>
-      
-    </p>
+      Aqui se muestra el mismo proceso de crear una carpeta para la Dockerizacion del sistema operattivo, pero dentro de la carpeta "contenedores", ya que ahi se estan colocando todos los contenedores, luego se crea el respectivo Dockerfile para crear la imagen de docker, y por ultimo se contruye la imagen del SO con <code>docker build -t &lt;nombre_imagen&gt; .</code>.
   </li>
   
   <li><br>
@@ -494,7 +557,18 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/ff019db1-a72a-4d70-9f50-d2c60457c351"/></p>
     </div>
     <p>
-      
+      Este es el mismo Dockerfile pero tambien cambia unos detalles el cual lo hace correr a la perfección pero con un cambio en esa configuración:
+      <ul>
+        <li><code>RUN apk add --no-cache bash openssh net-tools curl wget</code> → Instala paquetes usando el <b>gestor de paquetes de Alpine (apk)</b>:
+          <ul>
+            <li><code>--no-cache</code> evita almacenar caché para mantener la imagen liviana.</li>
+            <li><code>bash</code> instala la shell Bash (ya que Alpine usa <code>ash</code> por defecto).</li>
+            <li><code>openssh</code> instala el servidor SSH.</li>
+            <li><code>net-tools</code> agrega utilidades de red como <code>ifconfig</code>.</li>
+            <li><code>curl</code> y <code>wget</code> permiten realizar descargas desde la terminal.</li>
+          </ul>
+        </li>
+      </ul>
     </p>
   </li>
 
@@ -503,7 +577,8 @@
       <p><img width="850" src="https://github.com/user-attachments/assets/1c8b05b3-d718-4e43-b0a6-ae0dfa0b898a"/></p>
     </div>
     <p>
-      
+      Ahora si corremos el contenedor con las espicificaciones solicitadas, los recursos que debe gastar serian los mismos al del SO Ubuntu, ya que es una rama del nodo de la subred Financiera.
+    </p>
     </p>
   </li>
 </ol>
